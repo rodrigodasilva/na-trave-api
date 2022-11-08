@@ -32,7 +32,7 @@ describe('/user - create', () => {
   it('should not create a new user with a existing email', async () => {
     const firstUser = {
       email: 'rodrigo@test.com',
-      name: 'Rodrigo Ribeiro 1',
+      name: 'Rodrigo Ribeiro One',
       username: 'rodrigo',
       password: '123456',
       role: 'seller'
@@ -46,7 +46,7 @@ describe('/user - create', () => {
 
     const secondUser = {
       email: 'rodrigo@test.com',
-      name: 'Rodrigo Ribeiro 2',
+      name: 'Rodrigo Ribeiro Two',
       username: 'rodrigo2',
       password: '123456',
       role: 'seller'
@@ -62,7 +62,7 @@ describe('/user - create', () => {
   it('should not create a new user with a existing username', async () => {
     const firstUser = {
       email: 'rodrigo1@test.com',
-      name: 'Rodrigo Ribeiro 1',
+      name: 'Rodrigo Ribeiro One',
       username: 'rodrigo',
       password: '123456',
       role: 'seller'
@@ -76,7 +76,7 @@ describe('/user - create', () => {
 
     const secondUser = {
       email: 'rodrigo2@test.com',
-      name: 'Rodrigo Ribeiro 2',
+      name: 'Rodrigo Ribeiro Two',
       username: 'rodrigo',
       password: '123456',
       role: 'seller'
