@@ -12,6 +12,6 @@ const userRoutes = new Router({ prefix: '/user' })
 //   matchesController.updateMatchScore
 // )
 
-userRoutes.get('/', userController.create)
+userRoutes.post('/', userController.create)
 
 export { userRoutes }

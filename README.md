@@ -158,5 +158,22 @@ A Vercel trabalha com Stateless Functions, ou seja, funções que não armazenam
 
 ## Como rodar
 
-- Inicie o banco de dados
-> docker run -d -p 3306:3306 --name natrave-mysql -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=natrave -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin mysql/mysql-server:latest
+Pré-requisitos
+- npm / yarn
+- Docker compose
+
+
+1. Instale as dependências
+> npm install
+
+2. Inicie o servidor de banco de dados
+> npm run docker-up
+
+3. Inicie a aplicação 
+> npm run dev
+
+- Rode os testes 
+> npm run test
+
+
+

@@ -16,8 +16,4 @@ app.use(errorMiddleware)
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-const port = process.env.SERVER_PORT
-
-export function startServer() {
-    app.listen(port, () => console.log('Server is running!'))
-}
+export { app }
