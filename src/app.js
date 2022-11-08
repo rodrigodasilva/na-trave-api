@@ -4,7 +4,8 @@ import cors from '@koa/cors'
 import serve from 'koa-static'
 
 import { router } from './routes.routes.js'
-import { errorMiddleware } from './middlewares/index.js'
+
+import { errorMiddleware } from './shared/middlewares/index.js'
 
 const app = new Koa()
 

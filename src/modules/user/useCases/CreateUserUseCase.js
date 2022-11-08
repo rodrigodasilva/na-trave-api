@@ -1,4 +1,5 @@
-import { BaseError } from '../../../errors/baseError.js'
+
+import { BaseError } from '../../../shared/errors/baseError.js'
 import { UserService } from '../UserService.js'
 
 const userService = new UserService()
