@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -50,8 +50,8 @@ model Match {
   homeTeamId    Int?
   awayTeam      Team?     @relation(fields: [awayTeamId], references: [id], name: "awayTeamTeamId")
   awayTeamId    Int?
-  homeTeamScore Int?      @db.TinyInt
-  awayTeamScore Int?      @db.TinyInt
+  homeTeamScore Int
+  awayTeamScore Int
   datetime      DateTime
   stage         String    @db.VarChar(32)
   hunches       Hunch[]
@@ -68,8 +68,8 @@ model Hunch {
   userId        String
   match         Match     @relation(fields: [matchId], references: [id])
   matchId       Int
-  homeTeamScore Int       @db.TinyInt
-  awayTeamScore Int       @db.TinyInt
+  homeTeamScore Int
+  awayTeamScore Int
   contactName   String
   contactPhone  String
   createdAt DateTime  @default(now())

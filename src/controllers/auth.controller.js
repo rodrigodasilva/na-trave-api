@@ -1,8 +1,8 @@
-import { UsersService } from '../services/index.js'
+import { UserService } from '../modules/user/user.service.js'
 import { jwtUtils, cryptUtils, basicAuthUtils } from '../utils/index.js'
 import { UserNotFoundError } from '../errors/index.js'
 
-const userService = new UsersService()
+const userService = new UserService()
 
 export async function signUp(ctx) {
     const bodyParams = ctx.request.body

@@ -1,6 +1,3 @@
-![Versão do App](https://img.shields.io/github/package-json/v/HenriqueFelixDev/na-trave-api?color=%23AF053F&style=flat-square)
-![Issues](https://img.shields.io/github/issues/HenriqueFelixDev/na-trave-api?style=flat-square)
-
 # NaTrave API
 - [Overview](#overview)
     - [Sobre o projeto](#sobre-o-projeto)
@@ -14,7 +11,6 @@
         - [Roles de usuário](#roles-de-usuário)
     - [Tecnologias utilizadas](#tecnologias-utilizadas)
     - [Deploy](#deploy)
-- [Autor](#autor)
 
 # Overview
 ## Sobre o projeto
@@ -158,3 +154,9 @@ O deploy da aplicação foi feito na Vercel, que conta com um plano gratuito, in
 
 A Vercel trabalha com Stateless Functions, ou seja, funções que não armazenam estados a cada execução. Cada chamada na API é iniciada, processada e os dados são retornados sem nada ficar armazenado no servidor. Uma configuração do arquivo vercel.json é necessária para indicar a Vercel para onde deve redirecionar as requisições, apontando para o arquivo index.js do servidor, que deve ficar no diretório api.
 
+
+
+## Como rodar
+
+- Inicie o banco de dados
+> docker run -d -p 3306:3306 --name natrave-mysql -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=natrave -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin mysql/mysql-server:latest

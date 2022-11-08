@@ -1,10 +1,11 @@
 import { HunchAfterMatchStartError, UserNotFoundError } from '../errors/index.js'
-import { HunchesService, MatchesService, UsersService } from '../services/index.js'
+import { UserService } from '../modules/user/user.service.js'
+import { HunchesService, MatchesService } from '../services/index.js'
 import { dateUtils } from '../utils/index.js'
 
 const hunchesService = new HunchesService()
 const matchesService = new MatchesService()
-const usersService = new UsersService()
+const usersService = new UserService()
 
 export async function createOrUpdateHunch(ctx) {
     const userId = ctx.state.user.sub
