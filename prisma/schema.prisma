@@ -50,8 +50,8 @@ model Match {
   homeTeamId    Int?
   awayTeam      Team?     @relation(fields: [awayTeamId], references: [id], name: "awayTeamTeamId")
   awayTeamId    Int?
-  homeTeamScore Int
-  awayTeamScore Int
+  homeTeamScore Int?
+  awayTeamScore Int?
   datetime      DateTime
   stage         String    @db.VarChar(32)
   hunches       Hunch[]

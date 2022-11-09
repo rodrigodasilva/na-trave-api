@@ -1,4 +1,4 @@
-import { UnauthorizedError } from '../errors/index.js'
+import { UnauthorizedError } from '../errors/unauthorizedError.js'
 
 export function roleMiddleware(roles) {
 	return async (ctx, next) => {

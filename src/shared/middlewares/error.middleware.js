@@ -1,4 +1,4 @@
-import { BaseError } from '../errors/index.js'
+import { BaseError } from "../errors/baseError.js"
 
 export async function errorMiddleware(ctx, next) {
     try {

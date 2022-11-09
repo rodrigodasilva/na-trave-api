@@ -1,6 +1,6 @@
 import yup from 'yup'
 
-import { EntityValidationError } from '../errors/index.js'
+import { EntityValidationError } from '../errors/entityValidationError.js'
 import { yupUtils } from '../utils/index.js'
 
 export function validationMiddleware(validationSchema, datasource = 'body') {
