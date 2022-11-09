@@ -160,20 +160,28 @@ A Vercel trabalha com Stateless Functions, ou seja, funções que não armazenam
 
 Pré-requisitos
 - npm / yarn
-- Docker compose
+- Docker
 
 
 1. Instale as dependências
 > npm install
 
 2. Inicie o servidor de banco de dados
-> npm run docker-up
+> docker run -d --name natrave-postgres -e POSTGRESQL_PASSWORD=admin -e POSTGRESQL_USERNAME=admin -e POSTGRESQL_DATABASE=natrave -p 5432:5432 bitnami/postgresql:latest
 
-3. Inicie a aplicação 
+3. Rode as migrations
+> npm run migrate:dev
+
+4. Inicie a aplicação 
 > npm run dev
 
-- Rode os testes 
+
+- Rode os testes
+5. Inicie o banco de testes 
+> docker run -d --name tests-natrave-postgres -e POSTGRESQL_PASSWORD=admin -e POSTGRESQL_USERNAME=admin -e POSTGRESQL_DATABASE=tests -p 5433:5432 bitnami/postgresql:latest
+
+6. Rode as migrations de testes
+> npm run migrate:test
+
+7. Rode os testes
 > npm run test
-
-
-

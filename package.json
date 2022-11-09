@@ -5,15 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon -r dotenv-safe/config api/index.js",
+    "dev": "dotenv -e .env nodemon -r dotenv-safe/config api/index.js",
     "start": "node -r dotenv-safe/config api/index.js",
-    "test": "dotenv -e .env.test npm run docker-up:test && npm run migrate:test && NODE_OPTIONS=--experimental-vm-modules jest -i",
-    "docker-up": "docker-compose up -d",
-    "docker-up:test": "docker-compose -f docker-compose.test.yml up -d",
-    "docker-down:test": "docker-compose down",
-    "migrate:dev": "dotenv -e .env -- npx prisma migrate dev",
+    "migrate:dev": "npx prisma migrate dev",
     "migrate:test": "dotenv -e .env.test -- npx prisma migrate deploy",
-    "migrate:prod": "dotenv -e .env -- npx prisma migrate deploy"
+    "migrate:prod": "npx prisma migrate deploy",
+    "test": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --runInBand"
   },
   "keywords": [],
   "license": "ISC",

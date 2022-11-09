@@ -13,9 +13,9 @@ describe('/user - create', () => {
 
   it('should create a new user', async () => {
     const payload = {
-      email: 'rodrigo@test.com',
-      name: 'Rodrigo Ribeiro',
-      username: 'rodrigo',
+      email: 'create_user@test.com',
+      name: 'Create',
+      username: 'create',
       password: '123456',
       role: 'seller'
     }
