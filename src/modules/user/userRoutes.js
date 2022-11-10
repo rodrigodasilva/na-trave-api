@@ -13,10 +13,9 @@ const userRoutes = new Router()
 
 userRoutes.post('/login', authController.login)
 
-userRoutes.use(jwt({ secret: process.env.JWT_SECRET }))
-
 userRoutes.post(
   '/user',
+  jwt({ secret: process.env.JWT_SECRET }),
   roleMiddleware([role.ADMIN]),
   validationMiddleware(createUserValidator),
   userController.create
