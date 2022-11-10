@@ -16,4 +16,10 @@ matchRoutes.get(
   matchController.index
 )
 
+matchRoutes.get(
+  '/match/:id',
+  validationMiddleware({ id: commonValidator.matchId() }, 'params'),
+  matchController.show
+)
+
 export { matchRoutes }
