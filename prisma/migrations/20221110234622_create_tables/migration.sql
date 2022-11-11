@@ -45,7 +45,7 @@ CREATE TABLE "match" (
 -- CreateTable
 CREATE TABLE "hunch" (
     "id" TEXT NOT NULL,
-    "userId" TEXT NOT NULL,
+    "sellerId" TEXT NOT NULL,
     "matchId" INTEGER NOT NULL,
     "homeTeamScore" INTEGER NOT NULL,
     "awayTeamScore" INTEGER NOT NULL,
@@ -73,7 +73,7 @@ CREATE UNIQUE INDEX "team_abbr_key" ON "team"("abbr");
 CREATE INDEX "match_homeTeamId_awayTeamId_idx" ON "match"("homeTeamId", "awayTeamId");
 
 -- CreateIndex
-CREATE INDEX "hunch_userId_matchId_idx" ON "hunch"("userId", "matchId");
+CREATE INDEX "hunch_sellerId_matchId_idx" ON "hunch"("sellerId", "matchId");
 
 -- AddForeignKey
 ALTER TABLE "match" ADD CONSTRAINT "match_homeTeamId_fkey" FOREIGN KEY ("homeTeamId") REFERENCES "team"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -82,7 +82,7 @@ ALTER TABLE "match" ADD CONSTRAINT "match_homeTeamId_fkey" FOREIGN KEY ("homeTea
 ALTER TABLE "match" ADD CONSTRAINT "match_awayTeamId_fkey" FOREIGN KEY ("awayTeamId") REFERENCES "team"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "hunch" ADD CONSTRAINT "hunch_userId_fkey" FOREIGN KEY ("userId") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "hunch" ADD CONSTRAINT "hunch_sellerId_fkey" FOREIGN KEY ("sellerId") REFERENCES "user"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "hunch" ADD CONSTRAINT "hunch_matchId_fkey" FOREIGN KEY ("matchId") REFERENCES "match"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

@@ -6,7 +6,8 @@ export function sign(user, expiresIn = '7d') {
 	const payload = {
 		username: user.username,
 		email: user.email,
-		role: user.role
+		role: user.role,
+		id: user.id
 	}
 
 	return jwt.sign(payload, secret, {
