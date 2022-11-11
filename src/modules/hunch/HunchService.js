@@ -20,4 +20,10 @@ export class HunchService {
 			}
 		})
 	}
+
+	async createMany(hunches) {
+		return await client.$transaction(
+			hunches.map((hunch) => client.hunch.create({ data: hunch })),
+	 	)
+	}
 }

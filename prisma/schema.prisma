@@ -62,9 +62,14 @@ model Match {
   @@map("match")
 }
 
+enum Payment {
+ finished
+ pending
+}
+
 model Hunch {
   id            String    @id @default(cuid())
-  seller          User      @relation(fields: [sellerId], references: [id])
+  seller        User      @relation(fields: [sellerId], references: [id])
   sellerId      String
   match         Match     @relation(fields: [matchId], references: [id])
   matchId       Int
@@ -72,8 +77,9 @@ model Hunch {
   awayTeamScore Int
   contactName   String
   contactPhone  String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  payment       Payment   @default(pending)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
   
   @@index([sellerId, matchId])
   @@map("hunch")

@@ -1,10 +1,5 @@
 import yup from 'yup'
 
-function validateSellerId() {
-  return yup.string()
-      .required('O id do vendedor informado é inválido')
-}
-
 function validateMatchId() {
   return yup.number()
       .required('O id da partida informado é inválido')
@@ -25,10 +20,23 @@ function validateAwayTeamScore() {
       .min(0, 'O placar do time visitante não deve ser um número negativo')
 }
 
+function validateHunchQuantity() {
+  return yup.number()
+      .required('A quantidade de palpites é obrigatório')
+      .typeError('A quantidade de palpites deve ser um número')
+      .min(1, 'A quantidade de palpites não deve ser menor que 1')
+}
+
 function validateRequiredString(fieldName) {
   return yup.string()
     .required(`O ${fieldName} é obrigatório`)
     .trim(`O ${fieldName} não pode ser vazio`)
+}
+
+function validatePayment() {
+  return yup.string()
+    .required('O status do pagamento é obrigatório')
+    .oneOf(['finished', 'pending'], ({values}) => `O status do pagamento deve ser: ${values}`)
 }
 
 export const createHunchValidator = {
@@ -36,5 +44,7 @@ export const createHunchValidator = {
   homeTeamScore: validateHomeTeamScore(),
   awayTeamScore: validateAwayTeamScore(),
   contactName: validateRequiredString('nome'),
-  contactPhone: validateRequiredString('telefone')
+  contactPhone: validateRequiredString('telefone'),
+  quantity: validateHunchQuantity(),
+  payment: validatePayment()
 }

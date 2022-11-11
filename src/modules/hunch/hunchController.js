@@ -1,4 +1,4 @@
-import { CreateHunchUseCase } from "./useCases/CreateHunchUseCase.js"
+import { CreateHunchesUseCase } from "./useCases/CreateHunchesUseCase.js"
 
 export async function create(ctx) {
 	const { 
@@ -6,20 +6,24 @@ export async function create(ctx) {
 		homeTeamScore,
 		awayTeamScore,
 		contactName,
-		contactPhone
+		contactPhone,
+		payment,
+		quantity
 	} = ctx.request.body
 
 	const userId = ctx.state.user.id
 
-	const createHunchUseCase = new CreateHunchUseCase()
-	const hunch = await createHunchUseCase.execute({
+	const createHunchesUseCase = new CreateHunchesUseCase()
+	const hunches = await createHunchesUseCase.execute({
 		sellerId: userId,
 		matchId: Number(matchId), 
 		homeTeamScore: Number(homeTeamScore),
 		awayTeamScore: Number(awayTeamScore),
 		contactName,
-		contactPhone
+		contactPhone,
+		payment,
+		quantity: Number(quantity)
 	})
 
-	ctx.body = hunch
+	ctx.body = hunches
 }

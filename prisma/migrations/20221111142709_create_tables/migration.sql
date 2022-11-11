@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "Role" AS ENUM ('root', 'admin', 'seller', 'user');
 
+-- CreateEnum
+CREATE TYPE "Payment" AS ENUM ('finished', 'pending');
+
 -- CreateTable
 CREATE TABLE "user" (
     "id" TEXT NOT NULL,
@@ -51,6 +54,7 @@ CREATE TABLE "hunch" (
     "awayTeamScore" INTEGER NOT NULL,
     "contactName" TEXT NOT NULL,
     "contactPhone" TEXT NOT NULL,
+    "payment" "Payment" NOT NULL DEFAULT 'pending',
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3),
 
