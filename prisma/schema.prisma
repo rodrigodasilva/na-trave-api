@@ -78,6 +78,7 @@ model Hunch {
   contactName   String
   contactPhone  String
   payment       Payment   @default(pending)
+  won           Boolean?  @default(false)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime? @updatedAt
   

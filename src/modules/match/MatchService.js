@@ -27,4 +27,14 @@ export class MatchService {
 			}
 		})
 	}
+
+	updateMatchScores(id, homeTeamScore, awayTeamScore) {
+		return client.match.update({
+			where: { id },
+			data: {
+				homeTeamScore,
+				awayTeamScore
+			}
+		})
+	}
 }

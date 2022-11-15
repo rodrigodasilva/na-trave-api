@@ -103,4 +103,38 @@ export class HunchService {
 			data
 		})
 	}
+
+	updateWon(matchId, homeTeamScore, awayTeamScore) {
+		return client.hunch.updateMany({
+			where: {
+				AND: {
+					matchId,
+					homeTeamScore,
+					awayTeamScore
+				}
+			},
+			data: {
+				won: true
+			},
+		})
+	}
+
+	updateLoses(matchId, homeTeamScore, awayTeamScore) {
+		return client.hunch.updateMany({
+			where: {
+				matchId,
+				OR: [
+					{
+						homeTeamScore: { not: homeTeamScore }
+					},
+					{
+						awayTeamScore: { not: awayTeamScore }
+					}
+				]
+			},
+			data: {
+				won: false
+			}
+		})
+	}
 }
