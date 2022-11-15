@@ -26,4 +26,59 @@ export class HunchService {
 			hunches.map((hunch) => client.hunch.create({ data: hunch })),
 	 	)
 	}
+
+	findPublic(id) {
+		return client.hunch.findMany({
+			where: {
+				matchId: id
+			},
+			select: {
+				id: true,
+				matchId: true,
+				awayTeamScore: true,
+				homeTeamScore: true,
+				contactName: true,
+				createdAt: true,
+				match: {
+					include: {
+						homeTeam: true,
+						awayTeam: true
+					}
+				}
+			}
+		})
+	}
+
+	findAll(id) {
+		return client.hunch.findMany({
+			where: {
+				matchId: id
+			},
+			include: {				
+				match: {
+					include: {
+						homeTeam: true,
+						awayTeam: true
+					}
+				}
+			}
+		})
+	}
+
+	findBySeller(id, sellerId) {
+		return client.hunch.findMany({
+			where: {
+				matchId: id,
+				sellerId: sellerId
+			},
+			include: {				
+				match: {
+					include: {
+						homeTeam: true,
+						awayTeam: true
+					}
+				}
+			}
+		})
+	}
 }

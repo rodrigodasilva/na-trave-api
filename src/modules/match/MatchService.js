@@ -22,9 +22,8 @@ export class MatchService {
 				id
 			},
 			include: {
-				homeTeam: true,
 				awayTeam: true,
-				hunches: true
+				homeTeam: true
 			}
 		})
 	}

@@ -10,14 +10,29 @@ import { roleMiddleware } from '../../shared/middlewares/role.middleware.js'
 
 const hunchRoutes = new Router()
 
-hunchRoutes.use(jwt({ secret: process.env.JWT_SECRET }))
-
 hunchRoutes.post(
   '/hunch',
   jwt({ secret: process.env.JWT_SECRET }),
   roleMiddleware([role.SELLER]),  
   validationMiddleware(createHunchValidator),
   hunchController.create
+)
+
+hunchRoutes.get(
+  '/public/hunch/match/:matchId',
+  hunchController.indexPublic
+)
+
+hunchRoutes.get(
+  '/hunch/match/:matchId',
+  jwt({ secret: process.env.JWT_SECRET }),
+  hunchController.index
+)
+
+hunchRoutes.get(
+  '/hunch/match/:matchId/seller/:sellerId',
+  jwt({ secret: process.env.JWT_SECRET }),
+  hunchController.indexBySeller
 )
 
 export { hunchRoutes }
