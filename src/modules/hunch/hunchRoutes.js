@@ -4,7 +4,7 @@ import jwt from 'koa-jwt'
 import * as hunchController from './hunchController.js'
 import { validationMiddleware } from '../../shared/middlewares/validation.middleware.js'
 import { role } from '../../shared/const/roles.js'
-import { createHunchValidator } from './hunchValidators.js'
+import { createHunchValidator, updateHunchValidator } from './hunchValidators.js'
 import { roleMiddleware } from '../../shared/middlewares/role.middleware.js'
 
 
@@ -16,6 +16,14 @@ hunchRoutes.post(
   roleMiddleware([role.SELLER]),  
   validationMiddleware(createHunchValidator),
   hunchController.create
+)
+
+hunchRoutes.put(
+  '/hunch',
+  jwt({ secret: process.env.JWT_SECRET }),
+  roleMiddleware([role.SELLER]),  
+  validationMiddleware(updateHunchValidator),
+  hunchController.update
 )
 
 hunchRoutes.get(

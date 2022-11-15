@@ -27,8 +27,17 @@ export class HunchService {
 	 	)
 	}
 
+	findById(id) {
+		return client.hunch.findFirst({			
+			where: { id }
+		})
+	}
+
 	findPublic(id) {
 		return client.hunch.findMany({
+			orderBy: {
+				createdAt: 'desc'
+			},
 			where: {
 				matchId: id
 			},
@@ -51,6 +60,9 @@ export class HunchService {
 
 	findAll(id) {
 		return client.hunch.findMany({
+			orderBy: {
+				createdAt: 'desc'
+			},
 			where: {
 				matchId: id
 			},
@@ -67,6 +79,9 @@ export class HunchService {
 
 	findBySeller(id, sellerId) {
 		return client.hunch.findMany({
+			orderBy: {
+				createdAt: 'desc'
+			},
 			where: {
 				matchId: id,
 				sellerId: sellerId
@@ -79,6 +94,13 @@ export class HunchService {
 					}
 				}
 			}
+		})
+	}
+
+	update(id, data) {
+		return client.hunch.update({
+			where: { id },
+			data
 		})
 	}
 }

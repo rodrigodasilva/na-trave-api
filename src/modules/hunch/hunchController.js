@@ -2,6 +2,7 @@ import { CreateHunchesUseCase } from "./useCases/CreateHunchesUseCase.js"
 import { FindAllHunchesUseCase } from "./useCases/FindAllHunchesUseCase.js"
 import { FindHunchesBySellerUseCase } from "./useCases/FindHunchesBySellerUseCase.js"
 import { FindPublicHunchesUseCase } from "./useCases/FindPublicHunchesUseCase.js"
+import { UpdateHunchUseCase } from "./useCases/UpdateHunchUseCase.js"
 
 export async function indexPublic(ctx) {
 	const { matchId } = ctx.request.params
@@ -63,4 +64,31 @@ export async function create(ctx) {
 	})
 
 	ctx.body = hunches
+}
+
+export async function update(ctx) {
+	const { 
+		id,
+		homeTeamScore,
+		awayTeamScore,
+		contactName,
+		contactPhone,
+		payment,
+	} = ctx.request.body
+
+
+	const userId = ctx.state.user.id
+
+	const updateHunchUseCase = new UpdateHunchUseCase()
+	const hunch = await updateHunchUseCase.execute({
+		id,
+		userId: userId,
+		homeTeamScore: Number(homeTeamScore),
+		awayTeamScore: Number(awayTeamScore),
+		contactName,
+		contactPhone,
+		payment
+	})
+
+	ctx.body = hunch
 }

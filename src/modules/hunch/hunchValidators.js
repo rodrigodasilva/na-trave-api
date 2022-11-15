@@ -1,5 +1,11 @@
 import yup from 'yup'
 
+function validateHunchId() {
+  return yup.string()
+      .required('O id do palpite informado é inválido')
+      .typeError('O id do palpite deve ser uma string')
+}
+
 function validateMatchId() {
   return yup.number()
       .required('O id da partida informado é inválido')
@@ -46,5 +52,14 @@ export const createHunchValidator = {
   contactName: validateRequiredString('nome'),
   contactPhone: validateRequiredString('telefone'),
   quantity: validateHunchQuantity(),
+  payment: validatePayment()
+}
+
+export const updateHunchValidator = {
+  id: validateHunchId(),
+  homeTeamScore: validateHomeTeamScore(),
+  awayTeamScore: validateAwayTeamScore(),
+  contactName: validateRequiredString('nome'),
+  contactPhone: validateRequiredString('telefone'),
   payment: validatePayment()
 }
