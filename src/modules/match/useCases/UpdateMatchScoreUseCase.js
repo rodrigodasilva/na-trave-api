@@ -14,7 +14,6 @@ export class UpdateMatchScoreUseCase {
       hunchService.updateWon(id, homeTeamScore, awayTeamScore),
       hunchService.updateLoses(id, homeTeamScore, awayTeamScore),
     ])
-
     
     return result
 	}

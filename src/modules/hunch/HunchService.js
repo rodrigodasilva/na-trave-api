@@ -97,6 +97,26 @@ export class HunchService {
 		})
 	}
 
+	findWinners(matchId) {
+		return client.hunch.findMany({
+			orderBy: {
+				createdAt: 'desc'
+			},
+			where: {
+				matchId,
+				won: true
+			},
+			include: {				
+				match: {
+					include: {
+						homeTeam: true,
+						awayTeam: true
+					}
+				}
+			}
+		})
+	}
+
 	update(id, data) {
 		return client.hunch.update({
 			where: { id },

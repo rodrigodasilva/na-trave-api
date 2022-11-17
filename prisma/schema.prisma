@@ -55,8 +55,8 @@ model Match {
   datetime      DateTime
   stage         String    @db.VarChar(32)
   hunches       Hunch[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime? @updatedAt
 
   @@index([homeTeamId, awayTeamId])
   @@map("match")

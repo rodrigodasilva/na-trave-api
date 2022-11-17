@@ -43,4 +43,9 @@ hunchRoutes.get(
   hunchController.indexBySeller
 )
 
+hunchRoutes.get(
+  '/hunch/match/:matchId/winners',
+  hunchController.indexWinners
+)
+
 export { hunchRoutes }

@@ -2,6 +2,7 @@ import { CreateHunchesUseCase } from "./useCases/CreateHunchesUseCase.js"
 import { FindAllHunchesUseCase } from "./useCases/FindAllHunchesUseCase.js"
 import { FindHunchesBySellerUseCase } from "./useCases/FindHunchesBySellerUseCase.js"
 import { FindPublicHunchesUseCase } from "./useCases/FindPublicHunchesUseCase.js"
+import { FindWinnersHunchesUseCase } from "./useCases/FindWinnersHunchesUseCase.js"
 import { UpdateHunchUseCase } from "./useCases/UpdateHunchUseCase.js"
 
 export async function indexPublic(ctx) {
@@ -36,6 +37,17 @@ export async function indexBySeller(ctx) {
 	})
 	
 	ctx.body = hunches
+}
+
+export async function indexWinners(ctx) {
+	const { 
+		matchId,
+	} = ctx.request.params
+
+	const findWinnersHunchesUseCase = new FindWinnersHunchesUseCase()
+	const winnersHunches = await findWinnersHunchesUseCase.execute({ matchId: Number(matchId) })
+
+	ctx.body = winnersHunches
 }
 
 export async function create(ctx) {
