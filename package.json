@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "dotenv -e .env nodemon -r dotenv-safe/config api/index.js",
-    "start": "node -r dotenv-safe/config api/index.js",
+    "start": "dotenv -e .env node -r dotenv-safe/config api/index.js",
     "migrate:dev": "npx prisma migrate dev",
     "migrate:test": "dotenv -e .env.test -- npx prisma migrate deploy",
     "migrate:prod": "npx prisma migrate deploy",
