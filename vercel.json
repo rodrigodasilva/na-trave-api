@@ -1,14 +1,19 @@
 {
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
+  "headers": [
+      {
+          "source": "/v1/leaderboard",
+          "headers": [
+              {
+                  "key": "Cache-Control",
+                  "value": "public, max-age=3600, must-revalidate"
+              }
+          ]
+      }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "api/index.js"
-    }
+  "rewrites": [
+      {
+          "source": "/(.*)",
+          "destination": "/api"
+      }
   ]
 }
