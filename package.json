@@ -10,7 +10,7 @@
     "migrate:dev": "npx prisma migrate dev",
     "migrate:test": "dotenv -e .env.test -- npx prisma migrate deploy",
     "migrate:prod": "npx prisma migrate deploy",
-    "seed": "node prisma/seed/seed.js",
+    "seed": "dotenv -e .env node prisma/seed/seed.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --runInBand"
   },
   "keywords": [],
