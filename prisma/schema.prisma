@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -23,7 +23,7 @@ model User {
   username  String    @unique @db.VarChar(32)
   email     String    @unique @db.VarChar(255)
   password  String    @db.VarChar(255)
-  role      Role    @default(seller)
+  role      Role      @default(seller)
   createdAt DateTime  @default(now())
   updatedAt DateTime? @updatedAt
   hunches   Hunch[]
@@ -38,8 +38,8 @@ model Team {
   logo        String    @db.VarChar(255)
   homeMatches Match[]   @relation(name: "homeTeamTeamId")
   awayMatches Match[]   @relation(name: "awayTeamTeamId")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime? @updatedAt
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
 
   @@map("team")
 }

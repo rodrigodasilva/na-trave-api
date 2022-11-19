@@ -8,7 +8,6 @@
     "dev": "dotenv -e .env nodemon -r dotenv-safe/config api/index.js",
     "start": "dotenv -e .env node -r dotenv-safe/config api/index.js",
     "migrate:dev": "npx prisma migrate dev",
-    "migrate:test": "dotenv -e .env.test -- npx prisma migrate deploy",
     "migrate:prod": "npx prisma migrate deploy",
     "seed": "dotenv -e .env node prisma/seed/seed.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules dotenv -e .env.test jest --runInBand"

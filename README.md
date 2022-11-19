@@ -176,12 +176,6 @@ Pré-requisitos
 > npm run dev
 
 
-- Rode os testes
-5. Inicie o banco de testes 
-> docker run -d --name tests-natrave-postgres -e POSTGRESQL_PASSWORD=admin -e POSTGRESQL_USERNAME=admin -e POSTGRESQL_DATABASE=tests -p 5433:5432 bitnami/postgresql:latest
+- Banco MySQL
 
-6. Rode as migrations de testes
-> npm run migrate:test
-
-7. Rode os testes
-> npm run test
+> docker run -d -p 3306:3306 --name natrave-mysql -e MYSQL_ROOT_PASSWORD=admin -e MYSQL_DATABASE=natrave -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin mysql/mysql-server:latest
